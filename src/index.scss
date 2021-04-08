@@ -1,0 +1,83 @@
+@import "bootstrap/scss/bootstrap"; // подключаем бутстрап
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.note {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  strong {
+    margin-right: 1rem;
+  }
+}
+
+// начальное состояние элемента
+
+// работает вместе с библиотекой react-transition-group
+.alert-enter {
+  opacity: 0;
+}
+
+// непосредственно появление элемента
+.alert-enter-active {
+  transition: opacity 1500ms ease-out;  
+  opacity: 1;
+}
+
+// выход из анимации
+.alert-exit-active {
+  transition: opacity 350ms ease-out; // 350ms установлено в Alert.js
+  opacity: 0;
+}
+
+// для анимации notes
+
+@keyframes note {
+  0% {
+    transform: translateX(0)
+  }
+  30% {
+    opacity: .7;
+    transform: translateX(30px)
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-200px)
+  }
+}
+
+// анимация при удалении заметки
+.note-exit-active {
+  animation: note 1s forwards;
+}
+
+// alternate-reverse обратное действие анимации 
+.note-enter-active {
+  animation: note 1s ease-in alternate-reverse;
+}
+
+
+.countnotes {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 0 3px;
+}
+
+@import "media.scss"
+
+
+
+
